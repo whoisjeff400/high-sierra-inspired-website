@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import MenuBar from './components/MenuBar';
+import Dock from './components/Dock';
+import Window from './components/Window';
+import Clock from './components/Clock';
+import Desktop from './components/pages/Desktop';
+import SnakeGame from './components/pages/SnakeGame';
+import ToDoList from './components/pages/ToDoList';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-gray-200 min-h-screen relative">
+      {/* Static components */}
+      <MenuBar />
+      <Clock />
+      <Dock />
+
+      {/* Routing for different pages */}
+      <Routes>
+        <Route path="/" element={<Desktop />} />
+        <Route path="/snake-game" element={<SnakeGame />} />
+        <Route path="/to-do-list" element={<ToDoList />} />
+      </Routes>
     </div>
   );
-}
+};
 
 export default App;
